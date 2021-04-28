@@ -1,4 +1,4 @@
-from mysci.eaddata import read_data
+from mysci.readdata import read_data
 from mysci.printing import print_comparison
 from mysci.computation import compute_heatindex
 
@@ -16,10 +16,10 @@ data = read_data(columns, types=types)
 
 
 # Compute the heat index
-heatindex = []
-for temp, hum in zip(data['tempout'], data['humout']):
-   heatindex.append(compute_heatindex(temp, hum))
-
+#heatindex = []
+#for temp, hum in zip(data['tempout'], data['humout']):
+#   heatindex.append(compute_heatindex(temp, hum))
+heatindex = [compute_heatindex(t, h) for t, h in zip(data['tempout'], data['humout'])]
 
 # Output comparison of data
 print_comparison('HEAT INDX', data['date'], data['time'], data['heatindex'], heatindex)

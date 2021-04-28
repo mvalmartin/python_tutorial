@@ -13,10 +13,10 @@ types = {'tempout': float, 'windspeed': float, 'windchill': float}
 data=read_data(columns, types=types)
 
 # Compute the wind chill factor
-windchill = []
-for temp, windspeed in zip(data['tempout'], data['windspeed']):
-   windchill.append(compute_windchill(temp, windspeed))
-
+#windchill = []
+#for temp, windspeed in zip(data['tempout'], data['windspeed']):
+#   windchill.append(compute_windchill(temp, windspeed))
+windchill=[compute_windchill(t, w) for t, w in zip(data['tempout'], data['windspeed'])]
 
 # DEBUG
 # Output comparison of data
